@@ -1,263 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="./css/bootstrap-datepicker.min.css"> -->
-    <link rel="stylesheet" href="./css/select2.min.css"/>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
-    <title>펀넬관리시스템</title> 
-    <style>
-        /* *{margin:0;padding:0;box-sizing:border-box;}
-        html,body{height:100%;background:#F6F8FC;}
-        .sub_box{display:flex;flex-direction:column;min-height:100%;}
-        header{position:fixed;width:100%;height:60px;background:#041E49;}
-        footer{flex-grow:0;flex-shrink:0;min-width:1600px;height:45px;background:#EAF1FB;}
-        .content_box{flex-grow:1;flex-basis:0;padding:80px 0 20px;}
-        .center_box{width:1600px;margin:0 auto;}
-        .project_board_box{min-height:100%;background:white;padding:10px;} */
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/select2.min.css">
+  <link rel="stylesheet" href="./css/tui-date-picker.css">
+  <link rel="stylesheet" href="./css/style.css">    
+  <title>펀넬관리시스템</title>    
 </head>
 <body>
-    <div class="sub_box">
-        <!-- <header>
-            <div class="left_wrap">
-                <button class="btn_logo">
-                  <span class="company">AirQuay</span>
-                  <span class="brand ml-10px">펀넬 관리 시스템</span>          
-                </button>
-              </div>
-              <ul class="menu_list">
-                <li>
-                  <button class="btn_link" onclick="javascript:goPage(this, './home.html')">HOME</button>
-                </li>
-                <li class="active">
-                  <button class="btn_link" onclick="javascript:goPage(this, './list.html')">프로젝트 현황</button>
-                </li>
-                <li>
-                  <button class="btn_link" onclick="javascript:goPage(this, './report.html')">레포트</button>
-                </li>
-                <li>
-                  <button class="btn_link" onclick="javascript:goPage(this, '/admin.html')">관리자</button>
-                </li>
-              </ul>
-              <div class="right_wrap">
-                <div class="user_wrap">
-                  <span class="team">전략고객영업팀</span>
-                  <span class="user">홍길동</span>
-                </div>
-                <button class="btn_logout ml-10px" title="로그아웃"><span class="material-symbols-outlined">logout</span></button>
-              </div>
-        </header> -->
-        <div class="content_box center_box">
-          <div class="project_board_box">
-            <div class="table_search_wrap">
-                <table class="table_search">
-                  <colgroup>
-                    <col width="7%"/>
-                    <col width="18%"/>
-                    <col width="7%"/>
-                    <col width="18%"/>
-                    <col width="7%"/>
-                    <col width="18%"/>
-                    <col width="7%"/>
-                    <col width="18%"/>
-                  </colgroup>
-                  <tbody>
-                    <tr>
-                      <th>귀속기간</th>                          
-                      <td>                            
-                        <input type="text" class="search_input" id="datepicker_input_year">                              
-                        <div id="wrapper_year" ></div>
-                      </td>
-                      <th>담당부문</th>
-                      <td>
-                        <select class="fms_select" name="">
-                          <option>선택하세요</option>
-                          <option value="">a</option>
-                          <option value="">b</option>
-                        </select>
-                      </td>
-                      <th>담당부서</th>
-                      <td>
-                        <select class="fms_select" name="">
-                          <option>선택하세요</option>
-                          <option value="">a</option>
-                          <option value="">b</option>
-                        </select>
-                      </td>
-                      <th>담당자</th>
-                      <td>
-                        <select class="fms_select" name="">
-                          <option>선택하세요</option>
-                          <option value="">a</option>
-                          <option value="">b</option>
-                        </select>
-                      </td>            
-                    </tr>
-                    <tr>
-                      <th>프로젝트 번호</th>
-                      <td><input type="text" class="search_input" value="P판매230818-01"></td>
-                      <th>프로젝트 명</th>
-                      <td><input type="text" class="search_input" value="2023_아시아_대한민국_한국시스템_스마트안전_SmartSpace.Safety"></td>
-                      <th>거래처</th>
-                      <td><input type="text" class="search_input" value="COUPANGTAIWANCO.LTD."></td>     
-                      <th>영업단계</th>
-                      <td>
-                        <select class="fms_select" name="">
-                          <option>선택하세요</option>
-                          <option value="">a</option>
-                          <option value="">b</option>
-                        </select>
-                      </td>            
-                    </tr>
-                    <tr>
-                      <th>수주 예정월</th>                          
-                      <td>
-                        <div class="d-flex input-daterange">
-                          <div class="flex-grow-1">
-                            <input class="search_input" id="startpicker-input_order" type="text">
-                            <div id="startpicker-container_order"></div>
-                          </div>
-                          <div class="flex-grow-0 d-flex align-items-center ml-5px mr-5px">~</div>
-                          <div class="flex-grow-1">
-                            <input class="search_input" id="endpicker-input_order" type="text">
-                            <div id="endpicker-container_order"></div>
-                          </div>
-                        </div>
-                      </td>
-                      <th>매출 예정월</th>
-                      <td>
-                        <div class="d-flex input-daterange">
-                          <div class="flex-grow-1">
-                            <input class="search_input" id="startpicker-input_sales" type="text">
-                            <div id="startpicker-container_sales"></div>
-                          </div>
-                          <div class="flex-grow-0 d-flex align-items-center ml-5px mr-5px">~</div>
-                          <div class="flex-grow-1">
-                            <input class="search_input" id="endpicker-input_sales" type="text">
-                            <div id="endpicker-container_sales"></div>
-                          </div>
-                        </div>
-                      </td>
-                      <th></th>
-                      <td></td>     
-                      <th></th>
-                      <td class="text-right">
+  <div class="sub_box">        
+    <div class="content_box center_box">
+      <div class="project_board_box">
+        <div class="table_search_wrap">
+            <table class="table_search">
+              <colgroup>
+                <col width="7%"/>
+                <col width="18%"/>
+                <col width="7%"/>
+                <col width="18%"/>
+                <col width="7%"/>
+                <col width="18%"/>
+                <col width="7%"/>
+                <col width="18%"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <th>귀속기간</th>                          
+                  <td>                            
+                    <input type="text" class="search_input" id="datepicker_input_year">                              
+                    <div id="wrapper_year" ></div>
+                  </td>
+                  <th>담당부문</th>
+                  <td>
+                    <select class="fms_select" name="">
+                      <option>선택하세요</option>
+                      <option value="">a</option>
+                      <option value="">b</option>
+                    </select>
+                  </td>
+                  <th>담당부서</th>
+                  <td>
+                    <select class="fms_select" name="">
+                      <option>선택하세요</option>
+                      <option value="">a</option>
+                      <option value="">b</option>
+                    </select>
+                  </td>
+                  <th>담당자</th>
+                  <td>
+                    <select class="fms_select" name="">
+                      <option>선택하세요</option>
+                      <option value="">a</option>
+                      <option value="">b</option>
+                    </select>
+                  </td>            
+                </tr>
+                <tr>
+                  <th>프로젝트 번호</th>
+                  <td><input type="text" class="search_input" value="P판매230818-01"></td>
+                  <th>프로젝트 명</th>
+                  <td><input type="text" class="search_input" value="2023_아시아_대한민국_한국시스템_스마트안전_SmartSpace.Safety"></td>
+                  <th>거래처</th>
+                  <td><input type="text" class="search_input" value="COUPANGTAIWANCO.LTD."></td>     
+                  <th>영업단계</th>
+                  <td>
+                    <select class="fms_select" name="">
+                      <option>선택하세요</option>
+                      <option value="">a</option>
+                      <option value="">b</option>
+                    </select>
+                  </td>            
+                </tr>
+                <tr>
+                  <th>수주 예정월</th>                          
+                  <td>
+                    <div class="d-flex input-daterange">
+                      <div class="flex-grow-1">
+                        <input class="search_input" id="startpicker-input_order" type="text">
+                        <div id="startpicker-container_order"></div>
+                      </div>
+                      <div class="flex-grow-0 d-flex align-items-center ml-5px mr-5px">~</div>
+                      <div class="flex-grow-1">
+                        <input class="search_input" id="endpicker-input_order" type="text">
+                        <div id="endpicker-container_order"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <th>매출 예정월</th>
+                  <td>
+                    <div class="d-flex input-daterange">
+                      <div class="flex-grow-1">
+                        <input class="search_input" id="startpicker-input_sales" type="text">
+                        <div id="startpicker-container_sales"></div>
+                      </div>
+                      <div class="flex-grow-0 d-flex align-items-center ml-5px mr-5px">~</div>
+                      <div class="flex-grow-1">
+                        <input class="search_input" id="endpicker-input_sales" type="text">
+                        <div id="endpicker-container_sales"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <th></th>
+                  <td></td>     
+                  <th></th>
+                  <td class="text-right">
+                    <div class="d-inline-flex align-items-center">
+                      <button class="btn_search">
                         <div class="d-inline-flex align-items-center">
-                          <button class="btn_search">
-                            <div class="d-inline-flex align-items-center">
-                              <span class="material-symbols-outlined">search</span>
-                              <span>조회</span>
-                            </div>                              
-                          </button>
-                          <div class="ml-10px"></div>
-                          <button class="btn_excel">
-                            <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M9.66511 0.908951H2.33645C1.0514 0.908951 0 2.03395 0 3.40895V20.909H15.5763V7.23395L9.66511 0.908951ZM10.1246 3.75062L12.9206 6.74228H10.1246V3.75062ZM14.0187 19.2423H1.55763V3.40895C1.55763 2.95062 1.9081 2.57562 2.33645 2.57562H8.56698V8.40895H14.0187V19.2423ZM7.78816 12.234L9.03427 10.0756H10.8645L8.70716 13.8256L10.8645 17.5756H9.03427L7.78816 15.4173L6.54205 17.5756H4.71184L6.86916 13.8256L4.71184 10.0756H6.54205L7.78816 12.234Z" fill="white"/>
-                            </svg>
-                            <span class="d-inline ml-5px">엑셀</span>
-                          </button>
-                        </div>                            
-                      </td>            
-                    </tr>
-                  </tbody>
-                </table>
-            </div> 
-            <div class="searched_project">
-              <div class="noresult">
-                <span class="material-symbols-outlined icon">fmd_bad</span>
-                <div class="txt">검색된 결과가 없습니다.</div>
-                <div class="txt">필터를 초기화하고 다시 시도해보세요.</div>
-                <button class="btn_init">필터 초기화</button>
-              </div>
-            </div>
+                          <span class="material-symbols-outlined">search</span>
+                          <span>조회</span>
+                        </div>                              
+                      </button>
+                      <div class="ml-10px"></div>
+                      <button class="btn_excel">
+                        <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9.66511 0.908951H2.33645C1.0514 0.908951 0 2.03395 0 3.40895V20.909H15.5763V7.23395L9.66511 0.908951ZM10.1246 3.75062L12.9206 6.74228H10.1246V3.75062ZM14.0187 19.2423H1.55763V3.40895C1.55763 2.95062 1.9081 2.57562 2.33645 2.57562H8.56698V8.40895H14.0187V19.2423ZM7.78816 12.234L9.03427 10.0756H10.8645L8.70716 13.8256L10.8645 17.5756H9.03427L7.78816 15.4173L6.54205 17.5756H4.71184L6.86916 13.8256L4.71184 10.0756H6.54205L7.78816 12.234Z" fill="white"/>
+                        </svg>
+                        <span class="d-inline ml-5px">엑셀</span>
+                      </button>
+                    </div>                            
+                  </td>            
+                </tr>
+              </tbody>
+            </table>
+        </div> 
+        <div class="searched_project">
+          <div class="noresult">
+            <span class="material-symbols-outlined icon">fmd_bad</span>
+            <div class="txt">검색된 결과가 없습니다.</div>
+            <div class="txt">필터를 초기화하고 다시 시도해보세요.</div>
+            <button class="btn_init">필터 초기화</button>
           </div>
         </div>
-        <footer>
-          <div class="center_box h-100 d-flex align-items-center">© Copyright 2023. AirQuay All Rights Reserved.</div>
-        </footer>
+      </div>
     </div>
-    <script src="./js/jquery-3.0.0.min.js"></script>
-    <script src="./js/bootstrap.bundle.min.js"></script>  
-    <!-- <script src="./js/bootstrap-datepicker.min.js"></script>
-    <script src="./js/bootstrap-datepicker.ko.min.js"></script>  --> 
-    <script src="./js/select2.min.js"></script>
-    <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script>
-    <script>
-        var pWindow;
-        var loading_spinner;
-        $(function(){
-            initData();
-            initEventListener();
-            loading_spinner.hide();
-        });
-        function initData(){
-            pWindow = parent;
-            loading_spinner = pWindow.loading_spinner ?  pWindow.loading_spinner : $(pWindow).find('.loading_spinner');
+    <footer>
+      <div class="center_box h-100 d-flex align-items-center">© Copyright 2023. AirQuay All Rights Reserved.</div>
+    </footer>
+  </div>
+  <script src="./js/jquery-3.0.0.min.js"></script>
+  <script src="./js/jquery-ui.js"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/select2.min.js"></script>
+  <script src="./js/tui-date-picker.js"></script>
+  <script src="./js/common.js"></script>
+  <script>
+    var pWindow;
+    var loading_spinner;
+    $(function(){
+      initData();
+      initEventListener();
+      loading_spinner.hide();
+    });
+    function initData(){
+      pWindow = parent;
+      loading_spinner = pWindow.loading_spinner ?  pWindow.loading_spinner : $(pWindow).find('.loading_spinner');
+    }
+    function initEventListener(){
+      $('.searched_project').on('click', function(event){
+        if(event.target.className === 'btn_memo'){
+          pWindow.showMemo(true);
+        }else if(event.target.className === 'project_name'){
+          pWindow.goPage('project', './project_detail.html');
         }
-        function initEventListener(){
-            $('.searched_project').on('click', function(event){
-              if(event.target.className === 'btn_memo'){
-                pWindow.showMemo(true);
-              }else if(event.target.className === 'project_name'){
-                pWindow.goPage('project', './project_detail.html');
-              }
-            })
-            /* $('.btn_memo').on('click', function(){
-              pWindow.showMemo(true);
-            }); */
+      });          
 
-            $('.fms_select').select2({
-                width: '100%',
-                minimumResultsForSearch: Infinity
-            });
-           
-            var datepicker_year = new tui.DatePicker('#wrapper_year', {
-              date: new Date(),
-              input: {
-                  element: '#datepicker_input_year',
-                  format: 'yyyy'
-              },
-              type: 'year',
-              language: 'ko'
-            });            
-            
-            var order_range = tui.DatePicker.createRangePicker({
-                startpicker: {                    
-                    input: '#startpicker-input_order',
-                    container: '#startpicker-container_order',                    
-                },
-                endpicker: {                    
-                    input: '#endpicker-input_order',
-                    container: '#endpicker-container_order',                    
-                },               
-                format: 'YYYY-MM',
-                timePicker: false,
-                type: 'month',
-                language: 'ko'
-            });
+      $('.fms_select').select2({
+          width: '100%',
+          minimumResultsForSearch: Infinity
+      });
+      
+      var datepicker_year = new tui.DatePicker('#wrapper_year', {
+        date: new Date(),
+        input: {
+            element: '#datepicker_input_year',
+            format: 'yyyy'
+        },
+        type: 'year',
+        language: 'ko'
+      });            
+      
+      var order_range = tui.DatePicker.createRangePicker({
+        startpicker: {                    
+            input: '#startpicker-input_order',
+            container: '#startpicker-container_order',                    
+        },
+        endpicker: {                    
+            input: '#endpicker-input_order',
+            container: '#endpicker-container_order',                    
+        },               
+        format: 'YYYY-MM',
+        timePicker: false,
+        type: 'month',
+        language: 'ko'
+      });
 
-            var sales_range = tui.DatePicker.createRangePicker({
-                startpicker: {                    
-                    input: '#startpicker-input_sales',
-                    container: '#startpicker-container_sales',                    
-                },
-                endpicker: {                    
-                    input: '#endpicker-input_sales',
-                    container: '#endpicker-container_sales',                    
-                },               
-                format: 'YYYY-MM',
-                timePicker: false,
-                type: 'month',
-                language: 'ko'
-            });
-
-            
-        }
-    </script>
+      var sales_range = tui.DatePicker.createRangePicker({
+        startpicker: {                    
+            input: '#startpicker-input_sales',
+            container: '#startpicker-container_sales',                    
+        },
+        endpicker: {                    
+            input: '#endpicker-input_sales',
+            container: '#endpicker-container_sales',                    
+        },               
+        format: 'YYYY-MM',
+        timePicker: false,
+        type: 'month',
+        language: 'ko'
+      });
+    }
+  </script>
 </body>
 </html>

@@ -7,84 +7,6 @@ var modal = {
 		}
 	}
 }
-var common={	
-	calcDate : function (timestamp){
-		var time = new Date(timestamp);
-		var seconds = time.getSeconds();
-		var minutes = time.getMinutes();
-		var hours = time.getHours();
-		var date = time.getFullYear()+"-";
-		if(time.getMonth()<9){
-			date += "0"+(time.getMonth()+1)+"-";
-		}else{
-			date += (time.getMonth()+1)+"-";
-		}
-		if(time.getDate()<10){
-			date += "0"+(time.getDate());
-		}else{
-			date += (time.getDate());
-		}
-		
-		if(time.getSeconds() < 10){
-			seconds = "0"+time.getSeconds();
-		}else{
-			seconds = time.getSeconds();
-		}
-		if(time.getMinutes() < 10){
-			minutes = "0"+time.getMinutes();
-		}else{
-			minutes = time.getMinutes();
-		}
-		if(time.getHours() < 10){
-			hours = "0"+time.getHours();
-		}else{
-			hours = time.getHours();
-		}
-		
-		return date + " " + hours + ":" + minutes + ":" + seconds
-	},
-	/* onInputKeyUpEvent : function(element){
-		if($(element).prop('class') == "searchInput"){
-			if(event.keyCode==13){
-				getContents();
-			}
-		}
-
-	}, */
-	getDateString : function(myDate){
-		var year = myDate.getFullYear();
-		var month = (myDate.getMonth() + 1);
-		var day = myDate.getDate();
-		var hour = myDate.getHours();
-		var minute = myDate.getMinutes();
-		var second = myDate.getSeconds();
-		
-		month = (month < 10) ? "0" + String(month) : month;
-		day = (day < 10) ? "0" + String(day) : day;
-		hour = (hour < 10) ? "0" + String(hour) : hour;
-		minute = (minute < 10) ? "0" + String(minute) : minute;
-		second = (second < 10) ? "0" + String(second) : second;
-		
-		return  year + '-' + month + '-' + day + ' ' + hour + ":" + minute + ":" + second;
-	},
-	today : function() {
-		return common.getDateString(new Date());
-	},
-	lastWeek : function() {
-		var d = new Date();
-		var dayOfMonth = d.getDate();
-		
-		d.setDate(dayOfMonth - 7);
-		return common.getDateString(d);
-	},
-	lastMonth : function() {
-		var d = new Date();
-		var dayOfMonth = d.getDate();
-		
-		d.setDate(dayOfMonth - 7);
-		return common.getDateString(d);
-	}
-}
 
 Date.prototype.format = function (f) {
     if (!this.valueOf()) return " ";
@@ -117,30 +39,8 @@ String.prototype.string = function (len) { var s = '', i = 0; while (i++ < len) 
 String.prototype.zf = function (len) { return "0".string(len - this.length) + this; };
 Number.prototype.zf = function (len) { return this.toString().zf(len); };
 
-
-
 $(function(){
-	$(".arrow-sort").on("click", function(event){
-        var arrowOrder = ['combo', 'down', 'up'];
-        var currentIcon=0;
-        var nextIcon=0;
-        for(var i=0; i<arrowOrder.length; i++){			          
-          if(event.target.className == arrowOrder[i]){
-            currentIcon=i;
-            nextIcon=i+1;
-            if(i==arrowOrder.length-1) nextIcon=0;
-          }
-        }
-        event.target.setAttribute('class', arrowOrder[nextIcon]);			
-        $(event.currentTarget).attr('order',nextIcon);        
-    });
-
-	$(".tunnel_input.search").on("keyup", function(event){
-		if(event.keyCode==13){
-			console.log("--- enter--");
-			console.log(event.target.value);
-			//getContents();
-		}
-	});	
+	//var today = new Date();
+	//console.log(today.format('yyyy-MM-dd HH:mm:ss a/p'));
 });
 
